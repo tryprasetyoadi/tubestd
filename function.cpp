@@ -15,6 +15,7 @@ void insertMhs_first(listMhs &List, adrMhs mhs){
         first(List) = mhs;
     }
 };
+
 void deleteMhs_first(listMhs &List,adrMhs &mhs){
     if(first(List)==NULL){
         cout << "List kosong" <<endl;
@@ -61,38 +62,46 @@ void deletePres_first(listPres &List,adrPres &pres){
     }
 };
 
-void createChild_list(listChild &List){
-    firstCh(List) = NULL;
+void createChild_list(listChild &List, elmMhs &lMhs){
+    firstCh(lMhs) = NULL;
     lastCh(List) = NULL;
 };
 
-void insertChild_first(listChild &List, adrPres ch){
-    if(firstCh(List)==NULL){
-        firstCh(List) = ch;
-        lastCh(List) = ch;
-    }else{
-        next(ch) = firstCh(List);
-        next(lastCh(List)) = ch;
-        firstCh(List) = ch;
+adrChild createChild(adrPres pr) {
+    adrChild ch = new elmChild;
+    info(ch) = pr;
+    return ch;
+}
 
-//        next(ch) = firstCh(List);
-//        firstCh(List)= next(ch);
-//        next(lastCh(List)) = firstCh(List);
+void addChild(listMhs &List, listChild &lCh, string nim, adrChild ch) {
+    adrMhs x = first(List);
+    while(next(x)!=NULL && nim != info(x).nim) {
+        x = next(x);
     }
-};
+    if (x != NULL && firstCh(x) == NULL) {
+        firstCh(x) = ch;
+        next(ch) = lastCh(lCh);
+    } else if (x != NULL && firstCh(x) != NULL) {
+        next(lastch(lCh)) = ch;
+        prev(ch) = lastCh(lCh);
+        last(lCh) = ch;
+    }
+}
 
-void deleteChild_first(listChild &List,adrPres &ch){
-    if(firstCh(List)==NULL){
-        cout << "List kosong" <<endl;
-    }else if(firstCh(List)==lastCh(List)){
-        ch = firstCh(List);
-        firstCh(List) = NULL;
+
+void deleteChild_first(listChild &List, adrChild &ch, elmMhs &lMhs) {
+    if (firstCh(lMhs)==NULL) {
+        ch = NULL;
+        cout<<"List Kosong"<<endl;
+    } else if (firstCh(lMhs)==lastCh(List)) {
+        ch = firstCh(lMhs);
+        firstCh(lMhs) = NULL;
         lastCh(List) = NULL;
-    }else{
-        ch = firstCh(List);
-        firstCh(List) = next(firstCh(List));
+    } else {
+        ch = firstCh(lMhs);
+        firstCh(lMhs) = next(firstCh(lMhs));
         next(ch) = NULL;
-        next(lastCh(List)) = firstCh(List);
     }
-};
+}
+
 

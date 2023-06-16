@@ -11,7 +11,7 @@ int main()
     mhs.nim = "xxxx";
     adrMhs aMhs = createMhs(mhs);
     insertMhs_first(lMhs, aMhs);
-
+//
     listPres lPres;
     createPres_list(lPres);
     infoPres pres;
@@ -19,28 +19,44 @@ int main()
     pres.nama = "Juara 1 GEMASTIK 2023";
     adrPres aPres = createPres(pres);
     insertPres_first(lPres, aPres);
-
+//
+    elmMhs elMhs;
     listChild lCh;
     createChild_list(lCh);
-    insertChild_first(lCh, aPres);
+    adrChild ch = createChild(aPres);
+    addChild(elMhs, lCh, mhs.nim, ch);
 
-    mhs.nama = "pr";
-    mhs.jurusan = "TI";
-    mhs.nim = "xxxx";
-    aMhs = createMhs(mhs);
-    insertMhs_first(lMhs, aMhs);
-    cout << endl << "Hello world! "<<info(first(lMhs)).nama << " " << info(firstCh(lCh)).nama << endl;
-//    listPres lPres;
-//    createPres_list(lPres);
-//    infoPres pres;
     pres.type = "NASIONAL";
     pres.nama = "Juara 2 2023";
     aPres = createPres(pres);
     insertPres_first(lPres, aPres);
-//
+
 //    listChild lCh;
     createChild_list(lCh);
-    insertChild_first(lCh, aPres);
-    cout << endl << "Hello world! "<< " " << info(firstCh(lCh)).nama << info(first(lMhs)).nama;
-    return 0;
+    ch = createChild(aPres);
+    insertChild_first(lCh, elMhs, ch);
+
+    adrChild x = firstCh(elMhs);
+    cout << info(info(x)).nama << endl << info(info(x)).type;
+    x = lastCh(lCh);
+    cout << info(info(x)).nama << endl << info(info(x)).type;
+////
+//    mhs.nama = "pr";
+//    mhs.jurusan = "TI";
+//    mhs.nim = "xxxx";
+//    aMhs = createMhs(mhs);
+//    insertMhs_first(lMhs, aMhs);
+//    cout << endl << "Hello world! "<<info(first(lMhs)).nama << " " << info(firstCh(lCh)).nama << endl;
+////    listPres lPres;
+////    createPres_list(lPres);
+////    infoPres pres;
+//    pres.type = "NASIONAL";
+//    pres.nama = "Juara 2 2023";
+//    aPres = createPres(pres);
+//    insertPres_first(lPres, aPres);
+////
+////    listChild lCh;
+//    createChild_list(lCh);
+//    insertChild_first(lCh, aPres);
+    cout << endl << "Hello world! ";
 }

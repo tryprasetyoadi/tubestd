@@ -5,6 +5,7 @@
 #define firstCh(L) (L).firstCh
 #define first(L) (L).first
 #define next(P) (P)->next
+#define prev(P) (P)->prev
 #define info(P) (P)->info
 #define last(P) (P).last
 #define lastCh(P) (P).lastCh
@@ -12,7 +13,7 @@
 using namespace std;
 typedef struct elmMhs *adrMhs;
 typedef struct elmPres *adrPres;
-//typedef struct elmChild *adrChild;
+typedef struct elmChild *adrChild;
 struct infoMhs{
     string nama;
     string nim;
@@ -24,23 +25,25 @@ struct infoPres{
 };
 struct elmMhs{
     infoMhs info;
-    adrPres child;
     adrMhs next;
+    adrChild firstCh;
 };
 
 struct elmPres{
     infoPres info;
     adrPres next;
+    adrPres prev;
 };
 
 struct elmChild{
-    elmPres info;
-    elmPres next;
-    elmPres prev;
+    adrPres info;
+    adrChild next;
+    adrChild prev;
 };
 
 struct listMhs{
     adrMhs first;
+
 };
 
 struct listPres{
@@ -49,8 +52,7 @@ struct listPres{
 };
 
 struct listChild{
-    adrPres firstCh;
-    adrPres lastCh;
+    adrChild lastCh;
 };
 
 adrMhs createMhs(infoMhs i);
@@ -63,7 +65,9 @@ void createPres_list(listPres &List);
 void insertPres_first(listPres &List, adrPres mhs);
 void deletePres_first(listPres &List, adrPres &mhs);
 
+adrChild createChild(adrPres ch);
 void createChild_list(listChild &List);
-void insertChild_first(listChild &List, adrPres ch);
-void deleteChild_first(listChild &List, adrPres &ch);
+void addChild(listMhs &List, listChild &lCh, string x, adrChild ch);
+void deleteChild_first(listChild &List, elmMhs &lMhs, adrChild &ch);
+
 #endif // HEADER_H_INCLUDED
