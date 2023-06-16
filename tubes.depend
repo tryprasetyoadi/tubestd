@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1684245142 source:c:\users\tes\documents\tubes\main.cpp
+	"header.h"
+
+1684245128 source:c:\users\tes\documents\tubes\function.cpp
+	"header.h"
+
+1684245119 c:\users\tes\documents\tubes\header.h
+	<iostream>
+
+1684259063 source:c:\users\pras pc\downloads\documents\tubes\main.cpp
+	"header.h"
+
+1684258467 c:\users\pras pc\downloads\documents\tubes\header.h
+	<iostream>
+
+1684258454 source:c:\users\pras pc\downloads\documents\tubes\function.cpp
+	"header.h"
+
+1686921497 source:g:\documents\tubes\function.cpp
+	"header.h"
+
+1686919509 g:\documents\tubes\header.h
+	<iostream>
+
+1686920881 source:g:\documents\tubes\main.cpp
+	"header.h"
+
